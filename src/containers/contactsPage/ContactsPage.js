@@ -38,7 +38,11 @@ export const ContactsPage = ({ contacts, addContact }) => {
       }
       return false;
     };
-    duplicateName ? setDuplicate(true) : setDuplicate(false);
+    if (duplicateName()) {
+      setDuplicate(true);
+    } else {
+      setDuplicate(false);
+    }
   }, [name, contacts, duplicate]);
 
   return (
@@ -58,7 +62,7 @@ export const ContactsPage = ({ contacts, addContact }) => {
       <hr />
       <section>
         <h2>Contacts</h2>
-        <TileList contacts={contacts} />
+        <TileList tiles={contacts} />
       </section>
     </div>
   );
